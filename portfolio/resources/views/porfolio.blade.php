@@ -70,6 +70,8 @@
         <p>Qui puoi vedere i miei progetti e lavori.</p>
     </div>
 
+
+
     <!-- Footer -->
     <div class="footer">
         <p>&copy; 2026 Cristian Buonocore | Portfolio</p>
