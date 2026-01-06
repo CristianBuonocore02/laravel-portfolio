@@ -1,38 +1,83 @@
 @extends('layouts.project')
 
 @section('content')
-    <h1 class="text-center">Benvenuti nel mio portfolio digitale</h1>
+    <!-- HERO / TITOLO -->
+    <div class="container-fluid bg-dark text-white py-5 mb-5 w-100">
+        <div class="container text-center">
+            <h1 class="display-3 fw-bold mb-3">
+                Portfolio Progetti
+            </h1>
+            <p class="lead text-secondary mb-4">
+                Gestione e visualizzazione dei progetti professionali
+            </p>
 
-    <div class="container py-5">
-        <div class="row">
+            <a href="{{ route('project.create') }}" class="btn btn-success btn-lg">
+                + Nuovo Progetto
+            </a>
+        </div>
+    </div>
+
+    <!-- CONTENUTO PRINCIPALE -->
+    <div class="container mb-5">
+
+        <!-- SEZIONE PROGETTI -->
+        <div class="row g-4">
             @foreach ($projects as $project)
-                <div class="col-md-4 mb-4">
-                    <!-- Card con tema scuro -->
-                    <div class="card bg-dark text-white h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $project->nome }}</h5>
-                            <p class="card-text"><strong>Cliente:</strong> {{ $project->cliente }}</p>
-                            <p class="card-text"><strong>Periodo:</strong> {{ $project->periodo }}</p>
-                            <!-- Aggiungi link o altre azioni -->
-                            <a href="{{ route('project.show', $project) }}" class="btn btn-light">Dettagli</a>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card bg-dark text-white h-100 shadow-lg border-0">
+
+                        <div class="card-body d-flex flex-column p-4">
+
+                            <!-- Titolo progetto -->
+                            <h4 class="card-title mb-3">
+                                {{ $project->nome }}
+                            </h4>
+
+                            <!-- Info progetto -->
+                            <div class="mb-4 text-secondary">
+                                <p class="mb-1">
+                                    <strong>Cliente:</strong> {{ $project->cliente }}
+                                </p>
+                                <p class="mb-0">
+                                    <strong>Periodo:</strong> {{ $project->periodo }}
+                                </p>
+                            </div>
+
+                            <!-- Azioni -->
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <a href="{{ route('project.show', $project) }}" class="btn btn-outline-light">
+                                    Dettagli
+                                </a>
+
+                                <span class="badge bg-success">
+                                    Attivo
+                                </span>
+                            </div>
+
                         </div>
+
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4 w-100 fixed-bottom">
-        <p>&copy; {{ date('Y') }} - Il mio portfolio digitale</p>
-        <p>
-            <a href="https://www.linkedin.com" class="text-white" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            |
-            <a href="https://github.com" class="text-white" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-        </p>
+    <!-- FOOTER -->
+    <footer class="bg-black text-secondary py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-2">
+                &copy; {{ date('Y') }} — Portfolio Gestionale Progetti
+            </p>
+
+            <div>
+                <a href="https://www.linkedin.com" class="text-secondary me-3" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+
+                <a href="https://github.com" class="text-secondary" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
     </footer>
 @endsection
