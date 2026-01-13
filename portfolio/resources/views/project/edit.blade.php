@@ -26,6 +26,17 @@
             </div>
 
             <div class="mb-3">
+                <label for="tipo" class="form-label">tipo</label>
+                <select class="form-control" name="type_id" id="type_id" placeholder="seleziona il tipo" required>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" {{ $project->type_id == $type->id ? 'selected' : '' }}>
+                            {{ $type->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="riassunto" class="form-label">Riassunto</label>
                 <textarea class="form-control" name="riassunto" id="riassunto" rows="4" required placeholder="Scrivi qui...">{{ $project->riassunto }}</textarea>
             </div>

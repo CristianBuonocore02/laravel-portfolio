@@ -31,6 +31,10 @@
                     {{ $project->cliente }}
                 </p>
 
+                <small class="text-secondary">
+                    {{ $project->type->name }}
+                </small>
+
                 <p class="text-secondary">
                     {{ $project->periodo }}
                 </p>

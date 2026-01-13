@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
+
+use function PHPSTORM_META\type;
 
 class ProjectController extends Controller
 {
@@ -22,7 +25,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('project.create');
+        $types = Type::all();
+        return view('project.create', compact('types'));
     }
 
     /**
@@ -36,6 +40,7 @@ class ProjectController extends Controller
 
         $newProject->nome = $data['nome'];
         $newProject->cliente = $data['cliente'];
+        $newProject->type_id = $data['type_id'];
         $newProject->periodo = $data['periodo'];
         $newProject->riassunto = $data['riassunto'];
 
@@ -57,7 +62,10 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('project.edit', compact('project'));
+
+        // dd($project->type);
+        $types = Type::all();
+        return view('project.edit', compact('project', 'types'));
     }
 
     /**
@@ -69,6 +77,7 @@ class ProjectController extends Controller
 
         $project->nome = $data['nome'];
         $project->cliente = $data['cliente'];
+        $project->type_id = $data['type_id'];
         $project->periodo = $data['periodo'];
         $project->riassunto = $data['riassunto'];
 
