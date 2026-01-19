@@ -35,6 +35,15 @@
                     {{ $project->type->name }}
                 </small>
 
+                <h5>Tecnologie:</h5>
+
+                <ul>
+                    @foreach ($project->technologies as $technology)
+                        <strong>{{ $technology->name }}</strong>
+                    @endforeach
+                </ul>
+
+
                 <p class="text-secondary">
                     {{ $project->periodo }}
                 </p>

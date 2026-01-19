@@ -37,6 +37,19 @@
             </div>
 
             <div class="mb-3">
+                <label class="form-label">Tecnologie</label>
+
+                @foreach ($technologies as $technology)
+                    <div>
+                        <input type="checkbox" name="technologies[]" value="{{ $technology->id }}"
+                            @checked($project->technologies->contains($technology->id))>
+                        {{ $technology->name }}
+                    </div>
+                @endforeach
+            </div>
+
+
+            <div class="mb-3">
                 <label for="riassunto" class="form-label">Riassunto</label>
                 <textarea class="form-control" name="riassunto" id="riassunto" rows="4" required placeholder="Scrivi qui...">{{ $project->riassunto }}</textarea>
             </div>
